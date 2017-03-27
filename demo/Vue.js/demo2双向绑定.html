@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo2</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="message">
+		<p>{{message}}</p>
+
+		<p style="white-space:pre">{{messages}}</p>
+		<textarea name="" id="" cols="30" rows="10" v-model="messages"></textarea>
+
+		<!-- 复选框 -->
+		<input type="checkbox" id="check" v-model="check">
+		<label for="check">{{check}}</label>
+
+		<!-- 复选框组 -->
+		<div>
+			<input type="checkbox" value="zhao" id="name1" v-model="names">
+			<input type="checkbox" value="qian" id="name2" v-model="names">
+			<input type="checkbox" value="sun" id="name3" v-model="names">
+			<p>names:{{names}}</p>
+		</div>
+
+		<!-- 单选按钮 -->
+		<div>
+			<!-- 当选中时，`picked` 为字符串 value的值 -->
+			<input type="radio" value="xiaoming" v-model="radio">
+			<input type="radio" value="xiaowang" v-model="radio">
+			<p>radio:{{radio}}</p>
+		</div>
+
+		<!-- 选择列表 -->
+		<div>
+			<!-- 当选中时，`select` 为字符串 item.val -->
+			<select name="" id="" v-model="select">
+				<option v-for="item in options" v-bind:value="item.val">{{item.text}}</option>
+			</select>
+			<p>select:{{select}}</p>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			message:"hello",
+			messages:'',
+			check:true,
+			names:[],
+			radio:'',
+			select:'11111111111',
+			options:[
+				{text:'11111111111',val:'11111111111'},
+				{text:'22222222222',val:'22222222222'},
+				{text:'33333333333',val:'33333333333'}
+			]
+		}
+	})
+</script>
+</html>
+
+
+
+

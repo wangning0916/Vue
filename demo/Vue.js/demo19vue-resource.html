@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo19</title>
+</head>
+<body>
+	<div id="app"></div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		ready:function(){
+			this.$http.get("data.json",function(data){
+				console.log(data);
+				this.$set("books",data)
+			}).error(function(data,status,request){
+				console.log('fail' + status + "," + request);
+			})
+		},
+		data:{
+			books:''
+		}
+	})
+</script>

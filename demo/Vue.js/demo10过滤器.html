@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo10</title>
+</head>
+<body>
+	<div id="app">
+		<p>{{message | capitalize}}</p>
+		<p>{{message | reve}}</p>
+	</div>
+</body>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	//自定义的过滤器一定要在实例化之前 
+	Vue.filter("reve",function(value){
+		return value.split("").reverse().join("");
+	})
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			message:'a b c'
+		},
+		filters:{
+			 capitalize:function(value){
+			 	value = value.toString()
+			 	return value.toUpperCase()
+			 }
+		}
+	})
+</script>
+</html>

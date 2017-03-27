@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo3</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="list in lists" :key="list.id">{{list.name}}</li>
+		</ul>
+		<!-- 对父作用域属性的完全访问权限。 v-for 还支持一个可选的第二个参数为当前项的索引 -->
+		<p v-for="(item,index) in lists">{{parent}}-{{index}}-{{item.name}}</p>
+
+		<!-- 对象迭代 -->
+		<!-- 提供第二个的参数为键名 第三个参数为索引 -->
+		<h1 v-for="(value,key,index) in listObj">
+			{{index}}.{{key}}:{{value}}
+		</h1>
+
+		<!-- 整数迭代 -->
+		<p v-for="n in 10">{{n}}</p>
+
+		<!-- 过滤 -->
+		<h3 v-for="li in numStr">{{li}}</h3>
+	</div>
+</body>
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+			parent:'parentNode',
+			number:[1,2,3,4,5,6,7,8,9],
+			lists:[
+				{name:"aaa"},
+				{name:"bbb"},
+				{name:"ccc"},
+			],
+			listObj:{
+				firstName:'jackson',
+				lastName:'Zhou',
+				fullName:'jackson Zhou'
+			}
+		},
+		computed:{
+			numStr:function(){
+				return this.number.filter(function(num){
+					return num % 2 ===0;
+				})
+			}
+		}
+	})
+</script>
+</html>

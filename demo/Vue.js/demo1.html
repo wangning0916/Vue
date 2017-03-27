@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo1</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app" v-bind:title="title">
+		{{message}}
+
+		<p>{{message2}}</p>
+	</div>
+</body>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data:{
+			message:"",
+			title:"绑定dom元素的属性"+new Date()
+		}
+	})
+	app.message = "123";
+
+	app.message2 = "hello"
+
+	//Vue.$set(app.data,'message2','hello')
+</script>
+</html>
+
+
+
+
+

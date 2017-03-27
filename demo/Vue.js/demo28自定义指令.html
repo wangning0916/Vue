@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo28</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 使用自定义指令 -->
+		<p v-global-directive:console.log='content'>自定义指令</p>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	//初测注册指令
+	Vue.directive('global-directive',{
+		//指令实例属性
+		bind:function(){
+			console.log("bind：" + arguments)
+			//el指令绑定元素
+			console.log("el：" + this.el);
+			//wm该指令上下文的ViewModel,也可以为new Vue()的实例，也可以为组件实例
+			console.log("vm：" + this.el);
+			//expression：指令的表达式不包括参数和过滤器
+			console.log("expression：" + this.expression);
+			//arg指令的参数
+			console.log("arg：" + this.arg);
+			//modifiers，一个对象指令的修饰符
+			console.log("modifiers：" + this.modifiers);
+			//descriptor，一个对象指令的解析结果
+			console.log("descriptor：" + this.descriptor);
+		},
+		update:function(newVal,oldVal){
+			console.log("update：" + newval + "," + oldval);
+			var keys = Object.keys(this.modifiers);
+			window[this.arg][keys[0]](newVal)
+		},
+		unbind:function(){
+			console.log("bind：" + arguments)
+		}
+	})
+
+	//在组件的directives选项中注册一个局部组件
+	var component = Vue.extend({
+		directives:{
+			'localDirective':{}//可以采用驼峰式命名
+		}
+	})
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			content:'there is a content'
+		}
+	})
+</script>

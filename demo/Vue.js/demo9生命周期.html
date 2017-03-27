@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo9</title>
+</head>
+<body>
+	<div id="app">
+		{{a}}
+	</div>
+</body>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			a:'abc'
+		},
+		//实例被创建之后调用
+		created:function(){
+			//this指向vm
+			console.log(this.a);
+		}
+	})
+</script>
+</html>

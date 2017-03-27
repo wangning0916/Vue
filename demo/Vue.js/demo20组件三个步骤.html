@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo20</title>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	//创建组件构造器
+	// Vue.extend()是Vue构造器的扩展，调用Vue.extend()创建的是一个组件构造器，而不是一个具体的组件实例。
+	// Vue.extend()构造器有一个选项对象，选项对象的template属性用于定义组件要渲染的HTML。 
+	var myComponent = Vue.extend({
+		template:'<h1>组件三个步骤</h1>'
+	});
+
+	//注册组件
+	//使用Vue.component()注册组件时，需要提供2个参数，第1个参数时组件的标签(组件名)，第2个参数是组件构造器(第一步定义好的组件构造器)。
+	//Vue.component()方法内部会调用组件构造器，创建一个组件实例。 
+	Vue.component('my-component',myComponent);
+
+	//Vue实例
+	//组件应该挂载到某个Vue实例下，否则它不会生效。
+	var vm = new Vue({
+		el:'#app'
+	})
+</script>

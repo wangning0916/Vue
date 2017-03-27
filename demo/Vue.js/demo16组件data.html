@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo16</title>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	Vue.component("my-component",{
+		template:'<button v-on:click="{counter = counter + 1}">{{counter}}</button>',
+		data:function(){
+			return{
+				counter : 0
+			}
+		}
+	})
+
+	var vm = new Vue({
+		el:'#app',
+	})
+</script>

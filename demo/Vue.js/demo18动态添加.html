@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo18</title>
+	<style type="text/css">
+		table{border-collapse: collapse;}
+		td{border: 1px solid #ddd;padding: 10px 30px;}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<table>
+			<tr v-for="(book,index) in books">
+				<td>{{book.id}}</td>
+				<td>{{book.name}}</td>
+				<td>{{book.author}}</td>
+				<td>{{book.price}}</td>
+				<td v-if="book.id%2==0"><a href="javascript:void(0)" v-on:click="deleteBook(index)">删除1</a></td>
+				<td v-else><a href="javascript:void(0)" v-on:click="deleteBook(index)">删除2</a></td>
+			</tr>
+		</table>
+
+		<form id="" method="post" action="">
+			<input type="text" placeholder="请输入书名" v-model="book.name">
+			<input type="text" placeholder="请输入作者" v-model="book.author">
+			<input type="text" placeholder="请输入价格" v-model="book.price">
+		</form>
+		<button v-on:click="addBook">添加书籍</button>
+
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			book:{
+				id:0,
+				name:'',
+				author:'',
+				price:''
+			},
+			books:[
+				{id:1,name:'红楼梦',author:'曹雪芹',price:'￥32'},
+				{id:2,name:'西游记',author:'吴承恩',price:'￥31'},
+				{id:3,name:'三国演义',author:'罗贯中',price:'￥30'},
+				{id:4,name:'水浒传',author:'施耐庵',price:'￥29'},
+			]
+		},
+		methods:{
+			addBook:function(){
+				this.book.id=this.books.length+1;
+				this.books.push(this.book);
+				this.book = "";
+			},
+			deleteBook:function(index){
+				this.books.splice(index,1);
+			}
+		}
+	})
+</script>

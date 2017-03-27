@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo27</title>
+	<style type="text/css">
+		table{border-collapse: collapse;}
+		td,th{border: 1px solid #ddd;padding: 10px 30px;}
+	</style>
+</head>
+<body>
+	<!-- 单向绑定 -->
+	<div id="app">
+		<table>
+	        <tr>
+	            <th colspan="3">父组件数据</th>
+	        </tr>
+	        <tr>
+	            <td>name</td>
+	            <td>{{ name }}</td>
+	            <td><input type="text" v-model="name" /></td>
+	        </tr>
+	        <tr>
+	            <td>age</td>
+	            <td>{{ age }}</td>
+	            <td><input type="text" v-model="age" /></td>
+	        </tr>
+	    </table>
+	    <my-component v-bind:my-name="name" v-bind:my-age="age"></my-component>
+	</div>
+	<script type="text/x-template" id="mytemplate">
+		<table>
+	        <tr>
+	            <th colspan="3">子组件数据</th>
+	        </tr>
+	        <tr>
+	            <td>name</td>
+	            <td>{{ myName }}</td>
+	            <td><input type="text" v-model="myName" /></td>
+	        </tr>
+	        <tr>
+	            <td>age</td>
+	            <td>{{ myAge }}</td>
+	            <td><input type="text" v-model="myAge" /></td>
+	        </tr>
+	    </table>
+	</script>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	//单向绑定
+	//prop默认是单向绑定：当父组件的属性变化时，将传导给子组件，但是反过来不会。这是为了防止子组件无意修改了父组件的状态
+	//修改了子组件的数据，没有影响父组件的数据。
+	//修改了父组件的数据，同时影响了子组件。
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			name:'jsckson',
+			age:4
+		},
+		components:{
+			'my-component':{
+				template:'#mytemplate',
+				//想使父组件的数据，则必须先在子组件中定义props属性，也就是props: ['myName', 'myAge']这行代码。
+				props:['myName','myAge']
+			}
+		}
+	})
+
+	
+
+</script>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-template></my-template>
+
+	</div>
+</body>
+<script type="text/javascript">
+	
+	//全局注册
+	Vue.component('my-template',{
+		template:'<div>hello,world</div>'
+	});
+	// 局部注册
+	var Child = {
+		template:'<h1>局部注册</h1>'
+	}
+	//先注册后使用，否则会报错
+	var vm = new Vue({
+		el:"#app",
+		components:{
+			//只能在父膜板中使用
+			'my-component':Child
+		}
+	})
+</script>
+</html>

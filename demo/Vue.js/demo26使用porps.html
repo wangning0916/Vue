@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo26</title>
+</head>
+<body>
+	<div id="app">
+		<script type="text/x-template" id="mytemplate">
+			<div>
+				<p>姓名：{{myName}}</p>
+				<p>年龄：{{myAge}}</p>
+			</div>
+		</script>
+		<!-- 将父组件数据通过已定义好的props属性传递给子组件： -->
+		<!-- 在子组件中定义prop时，使用了camelCase命名法。由于HTML特性不区分大小写，camelCase的prop用于特性时，需要转为 kebab-case（短横线隔开）。例如，在prop中定义的myName，在用作特性时需要转换为my-name。 -->
+		<my-component v-bind:my-name="name" v-bind:my-age="age"></my-component>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	//组件实例的作用域是孤立的。这意味着不能并且不应该在子组件的模板内直接引用父组件的数据。可以使用 props 把数据传给子组件。
+	
+	//将这个Vue实例看作my-component的父组件。
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			name:'jsckson',
+			age:4
+		},
+		components:{
+			'my-component':{
+				template:'#mytemplate',
+				//想使父组件的数据，则必须先在子组件中定义props属性，也就是props: ['myName', 'myAge']这行代码。
+				props:['myName','myAge']
+			}
+		}
+	})
+
+
+
+	// 在父组件中使用子组件时，通过以下语法将数据传递给子组件：
+	// <child-component v-bind:子组件prop="父组件数据属性"></child-component>
+</script>

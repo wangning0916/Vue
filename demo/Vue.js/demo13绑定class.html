@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo13</title>
+	<style type="text/css">
+		.static{font-size: 20px;}
+		.active{color: #ff0000;}
+		.error{font-style: italic;}
+	</style>
+</head>
+<body>
+	<!-- 对象语法 -->
+	<div id="app">
+		<!-- 可以与普通的 class 属性共存 -->
+		<p class="static" v-bind:class="{active:isActive}">demo1</p>
+		<!-- 可以直接绑定数据里面的对象 -->
+		<p v-bind:class="classObj">demo2</p>
+		<!-- 计算属性 -->
+		<p v-bind:class="comObj">demo3</p>
+	</div>
+
+	<!-- 数组语法 -->
+	<di id="app2">
+		<!-- 根据条件切换列表中的 class ，可以用三元表达式 -->
+		<p v-bind:class="[isActive,isError]">demo4</p>
+	</di>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			isActive:true,
+			isError:true,
+			classObj:{
+				active:true,
+				error:true
+			}
+		},
+		computed:{
+			comObj:function(){
+				return {
+					active:this.isActive && this.isError
+				}
+			}
+		}
+	})
+
+	var vm2 = new Vue({
+		el:'#app2',
+		data:{
+			isActive:'active',
+			isError:'error'
+		}
+	})
+</script>

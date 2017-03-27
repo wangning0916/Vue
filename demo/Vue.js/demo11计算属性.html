@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo11</title>
+</head>
+<body>
+	<div id="app">
+		<p>原始的：{{message}}</p>
+		<p>修改过的：{{reverseMes}}</p>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			message:'i love china'
+		},
+		computed:{
+			//声明了一个计算属性 reversedMes
+			//vm.reversedMes依赖于 vm.message ，因此当 vm.message 发生改变时，所有依赖于 vm.reversedMes 的绑定也会更新
+			reverseMes:function(){
+				return this.message.split("").reverse().join("");
+			}
+		}
+	})
+</script>

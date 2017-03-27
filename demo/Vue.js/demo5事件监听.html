@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo5</title>
+	<script type="text/javascript" src="js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="点击加" v-on:click="add">
+		<input type="button" value="点击减" v-on:click="red">
+
+		<p>{{counter}}</p>
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			counter:0
+		},
+		methods:{
+			add:function(){
+				this.counter = this.counter + 1;
+			},
+			red:function(){
+				this.counter = this.counter - 1;
+			}
+		}
+	})
+</script>
+</html>
+
+
+
+

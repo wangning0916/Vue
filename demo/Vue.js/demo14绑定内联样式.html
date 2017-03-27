@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo14</title>
+</head>
+<body>
+	<div id="app">
+		<p v-bind:style="{color:vcolor,fontSize:vfont + 'px'}">绑定内联样式</p>
+
+		<!-- 直接绑定一个对象 -->
+		<p v-bind:style="styleObj">直接绑定一个对象</p>
+
+		<!-- 数组 -->
+		<p v-bind:style="[styleObj,styleObj2]">绑定数组添加多个样式</p>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#app',
+		data:{
+			vcolor:'#ff0000',
+			vfont:'30',
+			styleObj:{
+				color:'green',
+				fontSize:'30px'
+			},
+			styleObj2:{
+				border:'1px solid #ddd',
+				padding:'20px'
+			}
+		}
+	})
+</script>
